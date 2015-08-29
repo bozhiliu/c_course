@@ -86,8 +86,21 @@ void RemoveErroneousData(ACTempData acTemps[])
             {
                 acTemps[next].valid = false;
                 // Moving the indexes
+                previous +=1;
+                next +=1;
             }
         }
+        else
+        {
+            acTemps[next].valid = true;
+            next ++;
+            previous++;
+        }
+        int hour = acTemps[index].hour;
+        int min = acTemps[index].min;
+        float temp = acTemps[index].temperature;
+        bool status = acTemps[index].status;
+        printf("%2d:%2d %2.3f %d", hour, min, temp, status);
     }
     
 }
@@ -138,6 +151,14 @@ void TrendExtraction(ACTempData acTemps[])
             else
                 acTemps[index_current].status = false;
         }
+        
+        int hour = acTemps[index_current].hour;
+        int min = acTemps[index_current].min;
+        float temp = acTemps[index_current].temperature;
+        bool status = acTemps[index_current].status;
+        printf("Trend %2d:%2d %2.3f %d", hour, min, temp, status);
+        
+        
         index_current++;
     }
 }
