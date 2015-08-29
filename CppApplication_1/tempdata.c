@@ -74,6 +74,7 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
  */
 void RemoveErroneousData(ACTempData acTemps[])
 {
+    printf("Data Removal!\n");
     acTemps[0].valid = 1;
     int previous = 0;
     int next = 1;
