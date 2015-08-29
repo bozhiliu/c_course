@@ -78,6 +78,7 @@ void RemoveErroneousData(ACTempData acTemps[])
     acTemps[0].valid = 1;
     int previous = 0;
     int next = 1;
+    printf("Status %s", acTemps[next].status);
     while(acTemps[next].status != NULL)
     {
         printf("Remove index %d", next);
