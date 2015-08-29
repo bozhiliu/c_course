@@ -49,7 +49,8 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
     float temp;
     while(!feof(input_file))
     {
-        if(ferror(fscanf(input_file, "%d:%d %f", &hour, &min, &temp))) return false;
+        fscanf(input_file, "%d:%d %f", &hour, &min, &temp);
+        if(ferror(input_file)) return false;
         acTemps[ac_index].temperature = temp;
         acTemps[ac_index].status = false;
         if (temp <0  || temp>99.9) acTemps[ac_index].valid = false;
@@ -131,7 +132,7 @@ void TrendExtraction(ACTempData acTemps[])
         }
         else 
         {
-            if (acTemps[index_current].temperature <= acTemps[index_current-1])
+            if (acTemps[index_current].temperature <= acTemps[index_current-1].temperature)
                 acTemps[index_current].status = true;
             else
                 acTemps[index_current].status = false;

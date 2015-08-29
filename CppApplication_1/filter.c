@@ -39,7 +39,7 @@ void LowPassFilter(ACTempData acTemps[])
             index++;
             continue;
         }
-        filtered_output_current = acTemps[index] * coe2 + filtered_output_previous*coe1;
+        filtered_output_current = acTemps[index].temperature * coe2 + filtered_output_previous*coe1;
         acTemps[index].temperature = filtered_output_current;
         filtered_output_previous = filtered_output_current;
         index++;
