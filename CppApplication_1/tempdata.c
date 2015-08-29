@@ -80,6 +80,7 @@ void RemoveErroneousData(ACTempData acTemps[])
     int next = 1;
     while(acTemps[next].status != NULL)
     {
+        printf("Remove index %d", next);
         if(acTemps[previous].status == true)
         {
             if(acTemps[next].temperature > acTemps[previous].temperature+5 || 
