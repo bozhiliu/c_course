@@ -57,7 +57,8 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
         else acTemps[ac_index].valid = true;
         acTemps[ac_index].hour = hour;
         acTemps[ac_index].min = min;
-        printf("Index %d Hour %d Min %d Temp %f Status %s\n",ac_index, hour, min, temp, acTemps[ac_index].status);
+        printf("Index %d Hour %d Min %d Temp %f Status %s Valid %s\n",ac_index, hour, min, temp, 
+                acTemps[ac_index].status, acTemps[ac_index].valid);
         ac_index ++;
     }
     fclose(input_file);
