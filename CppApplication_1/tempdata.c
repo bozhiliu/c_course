@@ -50,7 +50,7 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
     while(!feof(input_file))
     {
         fscanf(input_file, "%d:%d %f", &hour, &min, &temp);
-        printf("Hour %d Min %d Temp %f", hour, min, temp);
+        printf("Hour %d Min %d Temp %f\n", hour, min, temp);
         if(ferror(input_file)) return false;
         acTemps[ac_index].temperature = temp;
         acTemps[ac_index].status = false;
