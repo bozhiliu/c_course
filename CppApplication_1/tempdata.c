@@ -104,7 +104,7 @@ void RemoveErroneousData(ACTempData acTemps[])
         bool status = acTemps[next].status;
         printf("Error %2d:%2d %2.3f %d", hour, min, temp, status);
     }
-    
+    printf("Remove pointer %d %d",previous, next);
 }
 
 /**************************************************************************************************/
