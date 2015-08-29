@@ -96,11 +96,11 @@ void RemoveErroneousData(ACTempData acTemps[])
             next ++;
             previous++;
         }
-        int hour = acTemps[index].hour;
-        int min = acTemps[index].min;
-        float temp = acTemps[index].temperature;
-        bool status = acTemps[index].status;
-        printf("%2d:%2d %2.3f %d", hour, min, temp, status);
+        int hour = acTemps[next].hour;
+        int min = acTemps[next].min;
+        float temp = acTemps[next].temperature;
+        bool status = acTemps[next].status;
+        printf("Error %2d:%2d %2.3f %d", hour, min, temp, status);
     }
     
 }
