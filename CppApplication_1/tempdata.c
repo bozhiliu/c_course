@@ -211,7 +211,7 @@ bool WriteTempDataToFile(ACTempData acTemps[], char *fileName)
         int min = acTemps[index].min;
         float temp = acTemps[index].temperature;
         bool status = acTemps[index].status;
-        printf("%2d:%2d %2.3f %d", hour, min, temp, status);
+        //printf("%2d:%2d %2.3f %d", hour, min, temp, status);
         fprintf(output_file, "%2d:%2d %2.3f %d", hour,min,temp, status);
     }
     return true;
