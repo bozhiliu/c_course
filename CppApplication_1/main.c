@@ -25,7 +25,7 @@ int
 main(int argc, char *argv[])
 {
    ACTempData acTemps[MinPerDay];
-   int data_count=0;
+   
    /*
     * check for the correct number of command line arguments.  If incorrect
     * provide a simple usage message to the assist the user

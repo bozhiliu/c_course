@@ -31,7 +31,7 @@ void LowPassFilter(ACTempData acTemps[])
     const float coe1 = 0.9250;
     const float coe2 = 0.0750;
     int index=1;
-    while(acTemps[index].status != NULL)
+    while(Struct_condition(acTemps[index])==true)
     {
         if(acTemps[index].valid == false)
         {
