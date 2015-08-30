@@ -60,10 +60,24 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
         printf("Index %d Hour %d Min %d Temp %f Status %d Valid %d\n",ac_index, hour, min, temp, 
                 acTemps[ac_index].status, acTemps[ac_index].valid);
         ac_index ++;
+       
     }
     fclose(input_file);
     return true;
 }
+
+
+/**************************************************************************************************/
+// Test if the array reaches the end
+/**************************************************************************************************/
+bool Struct_condition(ACTempData acTemp)
+{
+    if (acTemp.hour == 0 && acTemp.min ==0 && acTemp.status==0 && acTemp.temperature==0 && acTemp.valid == 0) return false;
+    else return true;
+}
+
+
+
 
 /**************************************************************************************************/
 
@@ -80,7 +94,7 @@ void RemoveErroneousData(ACTempData acTemps[])
     int previous = 0;
     int next = 1;
     printf("Status %s", acTemps[next].status);
-    while(acTemps[next].status != NULL)
+    while(Struct_condition(acTemps[next])== true )
     {
         printf("Remove index %d", next);
         if(acTemps[previous].status == true)
@@ -135,7 +149,7 @@ void RemoveErroneousData(ACTempData acTemps[])
 void TrendExtraction(ACTempData acTemps[])
 {
     int index_current = 1;
-    while(acTemps[index_current+1].status!=NULL)
+    while(Struct_condition(acTemps[index_current+1])==true)
     {
         if(acTemps[index_current-1].status == false)
         {
@@ -191,7 +205,7 @@ bool WriteTempDataToFile(ACTempData acTemps[], char *fileName)
     FILE* output_file = fopen(fileName, "w");
     int index = 0;
     if (output_file == NULL) return false;
-    while(acTemps[index].status!= NULL)
+    while(Struct_condition(acTemps[index]) == true)
     {
         int hour = acTemps[index].hour;
         int min = acTemps[index].min;

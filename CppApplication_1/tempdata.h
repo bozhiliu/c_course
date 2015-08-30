@@ -48,7 +48,7 @@ typedef struct ACTempData_struct {
 } ACTempData;
 
 /**************************************************************************************************/
-
+bool Struct_condition(ACTempData acTemp);
 /* Reads tempertures from an input file specified by fileName line-by-line using the format:
  *
  *    HH:MM TT.T
