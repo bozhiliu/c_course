@@ -118,9 +118,9 @@ void RemoveErroneousData(ACTempData acTemps[])
         int min = acTemps[next].min;
         float temp = acTemps[next].temperature;
         bool status = acTemps[next].status;
-        printf("Error %2d:%2d %2.3f %d", hour, min, temp, status);
+        printf("Error %2d:%2d %2.3f %d\n", hour, min, temp, status);
     }
-    printf("Remove pointer %d %d",previous, next);
+    printf("Remove pointer %d %d\n",previous, next);
 }
 
 /**************************************************************************************************/
@@ -174,7 +174,7 @@ void TrendExtraction(ACTempData acTemps[])
         int min = acTemps[index_current].min;
         float temp = acTemps[index_current].temperature;
         bool status = acTemps[index_current].status;
-        printf("Trend %2d:%2d %2.3f %d", hour, min, temp, status);
+        printf("Trend %2d:%2d %2.3f %d\n", hour, min, temp, status);
         
         
         index_current++;
@@ -212,7 +212,8 @@ bool WriteTempDataToFile(ACTempData acTemps[], char *fileName)
         float temp = acTemps[index].temperature;
         bool status = acTemps[index].status;
         //printf("%2d:%2d %2.3f %d", hour, min, temp, status);
-        fprintf(output_file, "%2d:%2d %2.3f %d", hour,min,temp, status);
+        fprintf(output_file, "%2d:%2d %2.3f %d\n", hour,min,temp, status);
+        index ++;
     }
     return true;
 }
