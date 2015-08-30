@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/tempfilter.dir/filter.o CMakeFiles/tempfilter.dir/main.o CMakeFiles/tempfilter.dir/tempdata.o  -o tempfilter -rdynamic 

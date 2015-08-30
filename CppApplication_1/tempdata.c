@@ -57,7 +57,7 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
         else acTemps[ac_index].valid = true;
         acTemps[ac_index].hour = hour;
         acTemps[ac_index].min = min;
-        printf("Index %d Hour %d Min %d Temp %f Status %s Valid %s\n",ac_index, hour, min, temp, 
+        printf("Index %d Hour %d Min %d Temp %f Status %d Valid %d\n",ac_index, hour, min, temp, 
                 acTemps[ac_index].status, acTemps[ac_index].valid);
         ac_index ++;
     }
@@ -75,7 +75,7 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
  */
 void RemoveErroneousData(ACTempData acTemps[])
 {
-    printf("Data Removal!\n");
+  printf("Data Removal!\n %d\n", acTemps[500].hour);
     acTemps[0].valid = 1;
     int previous = 0;
     int next = 1;
