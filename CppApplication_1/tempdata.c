@@ -46,10 +46,10 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
         return false;
     }
     int hour,min,ac_index=0;
-    float temp;
+    double temp;
     while(!feof(input_file))
     {   
-        fscanf(input_file, "%d:%d %f", &hour, &min, &temp);
+        fscanf(input_file, "%d:%d %lf", &hour, &min, &temp);
         if(ferror(input_file)) return false;
         acTemps[ac_index].temperature = temp;
         acTemps[ac_index].status = false;
@@ -57,8 +57,8 @@ bool ReadTempDataFromFile(ACTempData acTemps[], char *fileName)
         else acTemps[ac_index].valid = true;
         acTemps[ac_index].hour = hour;
         acTemps[ac_index].min = min;
-        printf("Index %d Hour %d Min %d Temp %f Status %d Valid %d\n",ac_index, hour, min, temp, 
-                acTemps[ac_index].status, acTemps[ac_index].valid);
+	//        printf("Index %d Hour %d Min %d Temp %f Status %d Valid %d\n",ac_index, hour, min, temp, 
+	//                acTemps[ac_index].status, acTemps[ac_index].valid);
         ac_index ++;
        
     }
@@ -89,38 +89,53 @@ bool Struct_condition(ACTempData acTemp)
  */
 void RemoveErroneousData(ACTempData acTemps[])
 {
-  printf("Data Removal!\n %d\n", acTemps[500].hour);
+  //  printf("Data Removal!\n %d\n", acTemps[500].hour);
     acTemps[0].valid = 1;
     int previous = 0;
     int next = 1;
-    printf("Status %s", acTemps[next].status);
+    //    printf("Status %s", acTemps[next].status);
+
     while(Struct_condition(acTemps[next])== true )
     {
-        printf("Remove index %d", next);
-        if(acTemps[previous].status == true)
+      if (!((acTemps[next].min == (acTemps[previous].min+1)) ||
+	   (acTemps[next].min ==0 && acTemps[previous].min == 59 && acTemps[next].hour == acTemps[previous].hour+1)))
+	{
+	  acTemps[next].valid = true;
+	  previous++;
+	  next++;
+	  continue;
+	}
+      //        printf("Remove index %d\n", next);
+        if(acTemps[previous].valid == true)
         {
-            if(acTemps[next].temperature > acTemps[previous].temperature+5 || 
-                    acTemps[next].temperature < acTemps[previous].temperature-5)
+	  if((acTemps[next].temperature > (acTemps[previous].temperature+5)) || 
+	     (acTemps[next].temperature < (acTemps[previous].temperature-5)))
             {
                 acTemps[next].valid = false;
                 // Moving the indexes
                 previous +=1;
                 next +=1;
             }
-        }
+	  else
+	    {	     
+	      acTemps[next].valid = true;
+	      previous++;
+	      next++;
+	    }
+	}
         else
         {
             acTemps[next].valid = true;
             next ++;
             previous++;
         }
-        int hour = acTemps[next].hour;
-        int min = acTemps[next].min;
-        float temp = acTemps[next].temperature;
-        bool status = acTemps[next].status;
-        printf("Error %2d:%2d %2.3f %d\n", hour, min, temp, status);
+	//        int hour = acTemps[next].hour;
+        //int min = acTemps[next].min;
+        //float temp = acTemps[next].temperature;
+        //bool status = acTemps[next].status;
+	//    printf("Error %2d:%2d %2.3f %d\n", hour, min, temp, status);
     }
-    printf("Remove pointer %d %d\n",previous, next);
+    //    printf("Remove pointer %d %d\n",previous, next);
 }
 
 /**************************************************************************************************/
@@ -146,38 +161,73 @@ void RemoveErroneousData(ACTempData acTemps[])
  *    C. Otherwise, the AC status for the current temperature will be Off.
  *
  */
+bool time_continuous(ACTempData acTemps[], int index_current)
+{
+  bool c1 = false;
+  bool c2 = false;
+  if (((acTemps[index_current].min == (acTemps[index_current-1].min+1)) ||
+	(acTemps[index_current].min ==0 && acTemps[index_current-1].min == 59 && acTemps[index_current].hour == acTemps[index_current-1].hour+1))) c1 = true;
+  if (((acTemps[index_current+1].min == (acTemps[index_current].min+1)) ||
+        (acTemps[index_current+1].min ==0 && acTemps[index_current].min == 59 && acTemps[index_current+1].hour == acTemps[index_current].hour+1))) c2 = true;
+  if(c1== true && c2 == true) return true;
+  else return false;
+}
+
+
+
+
+
+
+
 void TrendExtraction(ACTempData acTemps[])
 {
     int index_current = 1;
-    while(Struct_condition(acTemps[index_current+1])==true)
+    while(Struct_condition(acTemps[index_current])==true)
     {
-        if(acTemps[index_current-1].status == false)
-        {
-            if((acTemps[index_current-1].valid == true) && 
-                (acTemps[index_current].temperature < acTemps[index_current-1].temperature) &&
-                    acTemps[index_current+1].temperature <acTemps[index_current].temperature)
-            {
-                acTemps[index_current].status = true;
-            }
-            else
+      if(acTemps[index_current].valid == true)
+	{
+	  if(acTemps[index_current-1].valid == false)
+	    {
+	      acTemps[index_current].status = false;
+	      index_current ++;
+	      continue;
+	    }
+	  if(!((acTemps[index_current].min == (acTemps[index_current-1].min+1)) || 
+	       (acTemps[index_current].min ==0 && acTemps[index_current-1].min == 59 && acTemps[index_current].hour == acTemps[index_current-1].hour+1)))
+	    // if(time_continuous(acTemps, index_current)==false)
+	    {
+	      acTemps[index_current].status = false;
+	      index_current++;
+	      continue;
+	    }
+	  if(acTemps[index_current-1].status == false)
+	    {
+	      //      printf("Index %d\n",index_current);
+	      if((acTemps[index_current-1].valid == true) && 
+	 	 (acTemps[index_current].temperature < acTemps[index_current-1].temperature) &&
+		 acTemps[index_current+1].temperature <acTemps[index_current].temperature &&
+		 time_continuous(acTemps, index_current) == true)
+		{
+		  acTemps[index_current].status = true;
+		}
+	      else
                 acTemps[index_current].status = false;
-        }
-        else 
-        {
-            if (acTemps[index_current].temperature <= acTemps[index_current-1].temperature)
+	    }
+	  else 
+	    {
+	      if (acTemps[index_current].temperature <= acTemps[index_current-1].temperature)
                 acTemps[index_current].status = true;
-            else
+	      else
                 acTemps[index_current].status = false;
-        }
-        
-        int hour = acTemps[index_current].hour;
-        int min = acTemps[index_current].min;
-        float temp = acTemps[index_current].temperature;
-        bool status = acTemps[index_current].status;
-        printf("Trend %2d:%2d %2.3f %d\n", hour, min, temp, status);
-        
-        
-        index_current++;
+	    }
+	  
+	  //int hour = acTemps[index_current].hour;
+	  //int min = acTemps[index_current].min;
+	  //float temp = acTemps[index_current].temperature;
+	  //bool status = acTemps[index_current].status;
+	  //     printf("Trend %2d:%2d %2.3f %d\n", hour, min, temp, status);	  
+      	}
+      index_current++;
     }
 }
 /**************************************************************************************************/
@@ -207,13 +257,14 @@ bool WriteTempDataToFile(ACTempData acTemps[], char *fileName)
     if (output_file == NULL) return false;
     while(Struct_condition(acTemps[index]) == true)
     {
-        int hour = acTemps[index].hour;
-        int min = acTemps[index].min;
-        float temp = acTemps[index].temperature;
-        bool status = acTemps[index].status;
-        //printf("%2d:%2d %2.3f %d", hour, min, temp, status);
-        fprintf(output_file, "%02d:%02d   %2.3f  %d\n", hour,min,temp, status);
-        index ++;
+      int hour = acTemps[index].hour;
+      int min = acTemps[index].min;
+      double temp = acTemps[index].temperature;
+      bool status = acTemps[index].status;
+      printf("%2d:%2d %2.3f %d\n", hour, min, temp, status);
+      if(acTemps[index].valid == true) 
+	fprintf(output_file, "%02d:%02d\t%2.3f\t%d\n", hour,min, temp, status);
+      index ++;
     }
     return true;
 }
