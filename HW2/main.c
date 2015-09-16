@@ -9,6 +9,12 @@
 #include "dlist.h"
 #include "stdio.h"
 #include "card.h"
+#include "output.h"
+#include "str.h"
+#include "replace.h"
+
+
+
 
 
 void main(int argc, char* argv[])
