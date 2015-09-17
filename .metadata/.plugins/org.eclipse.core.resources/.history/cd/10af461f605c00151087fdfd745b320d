@@ -1,0 +1,39 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "dlist.h"
+#include "stdio.h"
+#include "card.h"
+
+
+void main(int argc, char* argv[])
+{
+	if (argc != 3)
+	{
+		printf("Usage: chars inputCards inputStrings outputFile\n");
+		return;
+	}
+
+	FILE* card = fopen(argv[1], "r");
+	FILE* str = fopen(argv[2],"r");
+	FILE* out = fopen(argv[3], "w");
+
+	DList neg_card ;
+	DList neg_str;
+	DList pos_card;
+
+	DListInit(neg_card);
+	DListInit(neg_str);
+	DListInit(pos_card);
+
+	card_read(card, neg_card, pos_card);
+
+
+
+
+}

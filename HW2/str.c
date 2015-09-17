@@ -5,12 +5,12 @@
  *      Author: vito
  */
 
-
+#include "stdlib.h"
 #include "str.h"
 
-void str_read(FILE * str_file, DList str_list)
+void str_read(FILE * str_file, DList* str_list)
 {
-	char* curr_str[1024];
+	char curr_str[1024];
 	int count;
 	for(count=0;count<1024;count++)
 	{
@@ -25,7 +25,7 @@ void str_read(FILE * str_file, DList str_list)
 		count = 1;
 		while(count<1024)
 		{
-			if(curr_str[count] == "\0" && curr_str[count-1] != "\0")
+			if(strncmp(curr_str[count],"\0") == 0 && strncmp(curr_str[count-1], "\0") != 0)
 			{
 				break;
 			}
@@ -34,13 +34,13 @@ void str_read(FILE * str_file, DList str_list)
 		DListNode *newNode = (DListNode *)malloc(sizeof(DListNode));
 		newNode->blankIndex = -1;
 		newNode->blankLength = count;
-		char *capture[1024];
+		char capture[1024];
 		int tmp;
 		for(tmp=0;tmp<1024;tmp++)
 		{
 			capture[tmp] = curr_str[tmp];
 		}
-		newNode->str = curr_str;
+		newNode->str = capture;
 		DListInsertAfter(str_list, curr_node, newNode);
 		for(count=0;count<1024;count++)
 		{

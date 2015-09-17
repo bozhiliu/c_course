@@ -1,0 +1,43 @@
+/*
+ * card.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "card.h"
+
+void card_read(FILE* card_file,  DList card_list)
+{
+	int curr_index = 0;
+	char* curr_card[1024];
+	DListNode *curr = card_list->head;
+
+
+	while(!feof(card_file))
+	{
+		char card_char;
+		fscanf(card_file, "%c", card_char);
+		if(card_char != "\n")
+		{
+			curr_card[curr_index] = card_char;
+			curr_index += 1;
+			continue;
+		}
+		if(card_char == "\n" && curr_index = 0)	continue;
+
+		{
+			curr_card[curr_index] = "\n";
+			curr_index = 0;
+			DListNode* newNode = malloc(sizeof(DListNode));
+			DListInsertAfter(card_list, curr, newNode);
+
+		}
+
+
+
+	}
+
+
+}

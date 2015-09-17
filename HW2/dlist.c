@@ -43,7 +43,7 @@ bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
 		list->tail = newNode;
 		newNode->prev = NULL;
 		newNode->next = newNode;
-		continue;
+		return 0;
 	}
 
 	if (list->tail == currNode)
@@ -73,7 +73,7 @@ bool DListInsertBefore(DList* list , DListNode* currNode , DListNode* newNode )
 		list->tail = newNode;
 		newNode->prev = NULL;
 		newNode->next = newNode;
-		continue;
+		return 0;
 	}
 
 	if(list->head == currNode)

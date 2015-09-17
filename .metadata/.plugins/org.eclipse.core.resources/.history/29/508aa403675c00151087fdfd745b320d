@@ -1,0 +1,17 @@
+/*
+ * replace.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "replace.h"
+
+
+
+
+void replace_process(DList neg_card, DList pos_card, DList str)
+{
+
+}

@@ -1,0 +1,92 @@
+/*
+ * dlist.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "dlist.h"
+
+
+void DListInit(DList *list)
+{
+	list->size = 1;
+	DListNode * start = (DListNode *) malloc(sizeof(DListNode));
+	list->head = start;
+	list->tail = start;
+}
+
+void DListDestoy(DList *list)
+{
+	list->size = 0;
+	DListNode *head = list->head;
+	DListNode *tail = list->tail;
+	while (head != tail)
+	{
+		DListNode *previous = tail->prev;
+		free(tail);
+		tail = previous;
+	}
+	list->head = NULL;
+	free(tail);
+	list->tail = NULL;
+}
+
+bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
+{
+	list->size = list->size + 1;
+
+	if (list->tail == currNode)
+	{
+		currNode->next = newNode;
+		newNode->prev = currNode;
+		newNode->next = NULL;
+		list->tail = newNode;
+		return 0;
+	}
+
+	DListNode *nextNode = currNode->next;
+	currNode->next = newNode;
+	newNode->prev = currNode;
+	newNode->next = nextNode;
+	nextNode->prev = newNode;
+	return 0;
+}
+
+bool DListInsertBefore(DList* list , DListNode* currNode , DListNode* newNode )
+{
+	list->size = list->size + 1;
+
+	if(list->head == currNode)
+	{
+		currNode->prev = newNode;
+		newNode->next = currNode;
+		newNode->prev = NULL;
+		list->head = newNode;
+		return 0;
+	}
+	DListNode *previousNode = currNode->prev;
+	currNode->prev = newNode;
+	newNode->next = currNode;
+	newNode->prev = previousNode;
+	previousNode->next = newNode;
+	return 0;
+}
+
+DListNode* DListSearch(DList* list , char * key)
+{
+	DListNode* iterator = list->head;
+	DListNode* match = NULL;
+	while(iterator != list->tail)
+	{
+		if (iterator->str == key)
+		{
+			match = iterator;
+			break;
+		}
+		iterator = iterator->next;
+	}
+	if (iterator != NULL)	return match;
+	else return -1;
+}

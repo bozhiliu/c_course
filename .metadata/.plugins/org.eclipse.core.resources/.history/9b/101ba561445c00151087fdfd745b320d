@@ -1,0 +1,23 @@
+/*
+ * dlist.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "dlist.h"
+
+
+void DListInit(DList *list)
+{
+	list->size = 1;
+	DListNode * start = (DListNode *) malloc(sizeof(DListNode));
+	list->head = start;
+	list->tail = start;
+}
+
+void DListDestoy(DList *list)
+{
+
+}

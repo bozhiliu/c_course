@@ -10,9 +10,9 @@
 
 #include "dlist.h"
 
-void replace_process(DList neg_card, DList pos_card, DList str);
+void replace_process(DList* neg_card, DList* pos_card, DList* str);
 
-void copy_replace(DListNode neg_card, DListNode str, DListNode pos_card);
+void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card);
 
 
 

@@ -10,6 +10,8 @@
 
 
 #include "dlist.h"
+#include "stdio.h"
+#include "stdlib.h"
 
 void write_output(FILE * output, DList * list);
 

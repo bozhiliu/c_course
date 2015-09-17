@@ -7,8 +7,9 @@
 
 #include "bool.h"
 #include "card.h"
+#include "stdlib.h"
 
-void card_read(FILE* card_file,  DList neg_card, DList pos_card)
+void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 {
 	// index for reading single character
 	int curr_index = 0;
@@ -20,7 +21,7 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 	char card_char;
 
 	// array used for checking blanks initialized to "111"
-	char* blank_check[3];
+	char blank_check[3];
 	blank_check[0] = "1"; blank_check[1] = "1"; blank_check[2] = "1";
 
 	// initial blank index and blank length
@@ -42,7 +43,7 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 		fscanf(card_file, "%c", &card_char);
 
 		// handle underscore
-		if(card_char == "_")
+		if(strncmp(card_char, "_") == 0)
 		{
 			// check for overflow
 			if(curr_index > 1023) continue;
@@ -51,7 +52,7 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 			// recursively assigning blank_check array
 			blank_check[curr_index%3] = "_";
 			// check continuity for initial encounter
-			if(blank_check[0] == "_" && blank_check[1] == "_" && blank_check[2] == "_" && blankIndex != -1)
+			if(strncmp(blank_check[0], "_") == 0 && strncmp(blank_check[1],"_") == 0 && strncmp(blank_check[2],"_") == 0 && blankIndex != -1)
 			{
 				blankIndex = curr_index - 2;
 				blankContinuity = true;
@@ -64,7 +65,7 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 		}
 
 		// handle normal characters
-		if(card_char != "\n")
+		if(strncmp(card_char, "\n") != 0)
 		{
 			// check for overflow
 			if(curr_index > 1023) continue;
@@ -76,11 +77,11 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 		}
 
 		// handle if there is no string in new line
-		if(card_char == "\n" && curr_index == 0)
+		if(strncmp(card_char,"\n") == 0 && curr_index == 0)
 			continue;
 
 		// handle when this line is ending
-		if(card_char == "\n" && curr_index != 0)
+		if(strncmp(card_char,"\n") == 0 && curr_index != 0)
 		{
 			// if overflow make the last char to be \0
 			if(curr_index < 1023)
@@ -97,8 +98,9 @@ void card_read(FILE* card_file,  DList neg_card, DList pos_card)
 			DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
 
 			// creating new array that store the string
-			char* capture[1024] = "";
-			for(int count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
+			char capture[1024] ;
+			int count;
+			for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
 			newNode->str = capture;
 
 			// put into pos_card or neg_card

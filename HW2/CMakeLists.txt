@@ -31,4 +31,4 @@ file( GLOB SRCS *.c *.h )
 # Define the target application executable (named tempfilter) and the list of C source
 # and header files needed for the executable.
 
-add_executable( tempfilter ${SRCS} )
+add_executable( hw2 ${SRCS} )

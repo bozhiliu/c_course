@@ -1,0 +1,23 @@
+/*
+ * replace.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "replace.h"
+
+
+
+
+void replace_process(DList neg_card, DList pos_card, DList str)
+{
+	DListNode *negcard_index = neg_card->head;
+	DListNode *str_index = str->head;
+
+	if(negcard_index->blankIndex == -1)
+	{
+		DListNode *newNode = (DListNode *)malloc(sizeof(DListNode));
+	}
+}

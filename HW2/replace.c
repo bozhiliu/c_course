@@ -9,7 +9,7 @@
 #include "replace.h"
 
 
-void copy_replace(DListNode neg_card, DListNode str, DListNode pos_card)
+void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card)
 {
 	pos_card->blankIndex = neg_card->blankIndex;
 	pos_card->blankLength = neg_card->blankLength;
@@ -24,7 +24,7 @@ void copy_replace(DListNode neg_card, DListNode str, DListNode pos_card)
 		int length = neg_card->blankLength;
 		for(count=0; count<length; count++)
 		{
-			pos_card[index+count] = str->str[count];
+			pos_card->str[index+count] = str->str[count];
 		}
 	}
 
@@ -34,7 +34,7 @@ void copy_replace(DListNode neg_card, DListNode str, DListNode pos_card)
 
 
 
-void replace_process(DList neg_card, DList pos_card, DList str)
+void replace_process(DList* neg_card, DList* pos_card, DList* str)
 {
 	DListNode *negcard_index = neg_card->head;
 

@@ -1,0 +1,64 @@
+/*
+ * replace.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "replace.h"
+
+
+void copy_replace(DListNode neg_card, DListNode str, DListNode pos_card)
+{
+	pos_card->blankIndex = neg_card->blankIndex;
+	pos_card->blankLength = neg_card->blankLength;
+	int count;
+	for(count=0;count<1024;count++)
+	{
+		pos_card->str[count] = neg_card->str[count];
+	}
+	if(str!=NULL)
+	{
+		int index = neg_card->blankIndex;
+		int length = neg_card->blankLength;
+		for(count=0; count<length; count++)
+		{
+			pos_card[index+count] = str->str[count];
+		}
+	}
+
+}
+
+
+
+
+
+void replace_process(DList neg_card, DList pos_card, DList str)
+{
+	DListNode *negcard_index = neg_card->head;
+	DListNode *str_index = str->head;
+//	DListNode *poscard_index = pos_card->head;
+	while(negcard_index != NULL)
+	{
+		if(negcard_index->blankIndex == -1)
+		{
+			DListNode *newNode = (DListNode *)malloc(sizeof(DListNode));
+			copy_replace(negcard_index,NULL,newNode);
+			DListNode *pos_iterator = pos_card->head;
+			if(pos_iterator == pos_card->tail)	DListInsertBefore(pos_card, NULL, newNode);
+			else
+			{
+				if(pos_iterator->blankLength != -1) DListInsertBefore(pos_card, pos_iterator, newNode);
+				else pos_iterator = pos_iterator->next;
+			}
+			DListRemove(neg_card, negcard_index);
+		}
+		else
+		{
+			DListNode *newNode = (DListNode *)malloc(sizeof(DListNode));
+
+		}
+		negcard_index = negcard_index->next;
+	}
+}

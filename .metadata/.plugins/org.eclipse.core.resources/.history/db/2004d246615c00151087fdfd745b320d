@@ -1,0 +1,14 @@
+/*
+ * str.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "str.h"
+
+void str_read(FILE * str_file, DList str_list)
+{
+
+}

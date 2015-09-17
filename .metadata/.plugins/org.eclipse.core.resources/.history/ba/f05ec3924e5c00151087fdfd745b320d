@@ -1,0 +1,26 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 16, 2015
+ *      Author: vito
+ */
+
+
+#include "dlist.h"
+
+
+void main(int argc, char* argv[])
+{
+	if (argc != 3)
+	{
+		printf("Usage: chars inputCards inputStrings outputFile\n");
+		return;
+	}
+
+
+
+
+
+
+
+}

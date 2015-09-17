@@ -9,6 +9,8 @@
 #define STR_H_
 
 #include "dlist.h"
+#include "stdio.h"
+#include "stdlib.h"
 
 void str_read(FILE * str_file, DList* str_list);
 
