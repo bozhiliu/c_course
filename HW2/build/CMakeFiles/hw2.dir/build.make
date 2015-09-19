@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake.exe
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/bozhiliu/m0/HW2/src
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/vito/c_course/HW2/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/bozhiliu/m0/HW2/build
+CMAKE_BINARY_DIR = /cygdrive/c/Users/vito/c_course/HW2/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/hw2.dir/depend.make
@@ -58,17 +58,17 @@ include CMakeFiles/hw2.dir/progress.make
 include CMakeFiles/hw2.dir/flags.make
 
 CMakeFiles/hw2.dir/card.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/card.o: /home/bozhiliu/m0/HW2/src/card.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw2.dir/card.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/card.o   -c /home/bozhiliu/m0/HW2/src/card.c
+CMakeFiles/hw2.dir/card.o: /cygdrive/c/Users/vito/c_course/HW2/src/card.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw2.dir/card.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/card.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/card.c
 
 CMakeFiles/hw2.dir/card.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/card.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/card.c > CMakeFiles/hw2.dir/card.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/card.c > CMakeFiles/hw2.dir/card.i
 
 CMakeFiles/hw2.dir/card.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/card.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/card.c -o CMakeFiles/hw2.dir/card.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/card.c -o CMakeFiles/hw2.dir/card.s
 
 CMakeFiles/hw2.dir/card.o.requires:
 
@@ -82,17 +82,17 @@ CMakeFiles/hw2.dir/card.o.provides.build: CMakeFiles/hw2.dir/card.o
 
 
 CMakeFiles/hw2.dir/dlist.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/dlist.o: /home/bozhiliu/m0/HW2/src/dlist.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/hw2.dir/dlist.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/dlist.o   -c /home/bozhiliu/m0/HW2/src/dlist.c
+CMakeFiles/hw2.dir/dlist.o: /cygdrive/c/Users/vito/c_course/HW2/src/dlist.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/hw2.dir/dlist.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/dlist.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/dlist.c
 
 CMakeFiles/hw2.dir/dlist.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/dlist.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/dlist.c > CMakeFiles/hw2.dir/dlist.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/dlist.c > CMakeFiles/hw2.dir/dlist.i
 
 CMakeFiles/hw2.dir/dlist.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/dlist.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/dlist.c -o CMakeFiles/hw2.dir/dlist.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/dlist.c -o CMakeFiles/hw2.dir/dlist.s
 
 CMakeFiles/hw2.dir/dlist.o.requires:
 
@@ -106,17 +106,17 @@ CMakeFiles/hw2.dir/dlist.o.provides.build: CMakeFiles/hw2.dir/dlist.o
 
 
 CMakeFiles/hw2.dir/main.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/main.o: /home/bozhiliu/m0/HW2/src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/hw2.dir/main.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/main.o   -c /home/bozhiliu/m0/HW2/src/main.c
+CMakeFiles/hw2.dir/main.o: /cygdrive/c/Users/vito/c_course/HW2/src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/hw2.dir/main.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/main.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/main.c
 
 CMakeFiles/hw2.dir/main.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/main.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/main.c > CMakeFiles/hw2.dir/main.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/main.c > CMakeFiles/hw2.dir/main.i
 
 CMakeFiles/hw2.dir/main.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/main.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/main.c -o CMakeFiles/hw2.dir/main.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/main.c -o CMakeFiles/hw2.dir/main.s
 
 CMakeFiles/hw2.dir/main.o.requires:
 
@@ -130,17 +130,17 @@ CMakeFiles/hw2.dir/main.o.provides.build: CMakeFiles/hw2.dir/main.o
 
 
 CMakeFiles/hw2.dir/output.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/output.o: /home/bozhiliu/m0/HW2/src/output.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/hw2.dir/output.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/output.o   -c /home/bozhiliu/m0/HW2/src/output.c
+CMakeFiles/hw2.dir/output.o: /cygdrive/c/Users/vito/c_course/HW2/src/output.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/hw2.dir/output.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/output.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/output.c
 
 CMakeFiles/hw2.dir/output.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/output.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/output.c > CMakeFiles/hw2.dir/output.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/output.c > CMakeFiles/hw2.dir/output.i
 
 CMakeFiles/hw2.dir/output.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/output.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/output.c -o CMakeFiles/hw2.dir/output.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/output.c -o CMakeFiles/hw2.dir/output.s
 
 CMakeFiles/hw2.dir/output.o.requires:
 
@@ -154,17 +154,17 @@ CMakeFiles/hw2.dir/output.o.provides.build: CMakeFiles/hw2.dir/output.o
 
 
 CMakeFiles/hw2.dir/replace.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/replace.o: /home/bozhiliu/m0/HW2/src/replace.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/hw2.dir/replace.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/replace.o   -c /home/bozhiliu/m0/HW2/src/replace.c
+CMakeFiles/hw2.dir/replace.o: /cygdrive/c/Users/vito/c_course/HW2/src/replace.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/hw2.dir/replace.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/replace.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/replace.c
 
 CMakeFiles/hw2.dir/replace.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/replace.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/replace.c > CMakeFiles/hw2.dir/replace.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/replace.c > CMakeFiles/hw2.dir/replace.i
 
 CMakeFiles/hw2.dir/replace.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/replace.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/replace.c -o CMakeFiles/hw2.dir/replace.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/replace.c -o CMakeFiles/hw2.dir/replace.s
 
 CMakeFiles/hw2.dir/replace.o.requires:
 
@@ -178,17 +178,17 @@ CMakeFiles/hw2.dir/replace.o.provides.build: CMakeFiles/hw2.dir/replace.o
 
 
 CMakeFiles/hw2.dir/str.o: CMakeFiles/hw2.dir/flags.make
-CMakeFiles/hw2.dir/str.o: /home/bozhiliu/m0/HW2/src/str.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/hw2.dir/str.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/str.o   -c /home/bozhiliu/m0/HW2/src/str.c
+CMakeFiles/hw2.dir/str.o: /cygdrive/c/Users/vito/c_course/HW2/src/str.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/hw2.dir/str.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/hw2.dir/str.o   -c /cygdrive/c/Users/vito/c_course/HW2/src/str.c
 
 CMakeFiles/hw2.dir/str.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw2.dir/str.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/bozhiliu/m0/HW2/src/str.c > CMakeFiles/hw2.dir/str.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /cygdrive/c/Users/vito/c_course/HW2/src/str.c > CMakeFiles/hw2.dir/str.i
 
 CMakeFiles/hw2.dir/str.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw2.dir/str.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/bozhiliu/m0/HW2/src/str.c -o CMakeFiles/hw2.dir/str.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /cygdrive/c/Users/vito/c_course/HW2/src/str.c -o CMakeFiles/hw2.dir/str.s
 
 CMakeFiles/hw2.dir/str.o.requires:
 
@@ -213,19 +213,19 @@ hw2_OBJECTS = \
 # External object files for target hw2
 hw2_EXTERNAL_OBJECTS =
 
-hw2: CMakeFiles/hw2.dir/card.o
-hw2: CMakeFiles/hw2.dir/dlist.o
-hw2: CMakeFiles/hw2.dir/main.o
-hw2: CMakeFiles/hw2.dir/output.o
-hw2: CMakeFiles/hw2.dir/replace.o
-hw2: CMakeFiles/hw2.dir/str.o
-hw2: CMakeFiles/hw2.dir/build.make
-hw2: CMakeFiles/hw2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bozhiliu/m0/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable hw2"
+hw2.exe: CMakeFiles/hw2.dir/card.o
+hw2.exe: CMakeFiles/hw2.dir/dlist.o
+hw2.exe: CMakeFiles/hw2.dir/main.o
+hw2.exe: CMakeFiles/hw2.dir/output.o
+hw2.exe: CMakeFiles/hw2.dir/replace.o
+hw2.exe: CMakeFiles/hw2.dir/str.o
+hw2.exe: CMakeFiles/hw2.dir/build.make
+hw2.exe: CMakeFiles/hw2.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable hw2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hw2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/hw2.dir/build: hw2
+CMakeFiles/hw2.dir/build: hw2.exe
 
 .PHONY : CMakeFiles/hw2.dir/build
 
@@ -243,6 +243,6 @@ CMakeFiles/hw2.dir/clean:
 .PHONY : CMakeFiles/hw2.dir/clean
 
 CMakeFiles/hw2.dir/depend:
-	cd /home/bozhiliu/m0/HW2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/bozhiliu/m0/HW2/src /home/bozhiliu/m0/HW2/src /home/bozhiliu/m0/HW2/build /home/bozhiliu/m0/HW2/build /home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cygdrive/c/Users/vito/c_course/HW2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/c/Users/vito/c_course/HW2/src /cygdrive/c/Users/vito/c_course/HW2/src /cygdrive/c/Users/vito/c_course/HW2/build /cygdrive/c/Users/vito/c_course/HW2/build /cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/hw2.dir/depend
 

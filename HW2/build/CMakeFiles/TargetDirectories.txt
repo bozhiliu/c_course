@@ -1,1 +1,1 @@
-/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir
+/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir

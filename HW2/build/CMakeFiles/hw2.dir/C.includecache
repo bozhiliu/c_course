@@ -6,77 +6,77 @@
 
 #IncludeRegexTransform: 
 
-/home/bozhiliu/m0/HW2/src/bool.h
+/cygdrive/c/Users/vito/c_course/HW2/src/bool.h
 
-/home/bozhiliu/m0/HW2/src/card.c
+/cygdrive/c/Users/vito/c_course/HW2/src/card.c
 bool.h
-/home/bozhiliu/m0/HW2/src/bool.h
+/cygdrive/c/Users/vito/c_course/HW2/src/bool.h
 card.h
-/home/bozhiliu/m0/HW2/src/card.h
+/cygdrive/c/Users/vito/c_course/HW2/src/card.h
 stdlib.h
-/home/bozhiliu/m0/HW2/src/stdlib.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdlib.h
 
-/home/bozhiliu/m0/HW2/src/card.h
+/cygdrive/c/Users/vito/c_course/HW2/src/card.h
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 stdio.h
-/home/bozhiliu/m0/HW2/src/stdio.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdio.h
 
-/home/bozhiliu/m0/HW2/src/dlist.c
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.c
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 bool.h
-/home/bozhiliu/m0/HW2/src/bool.h
+/cygdrive/c/Users/vito/c_course/HW2/src/bool.h
 stdlib.h
-/home/bozhiliu/m0/HW2/src/stdlib.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdlib.h
 
-/home/bozhiliu/m0/HW2/src/main.c
+/cygdrive/c/Users/vito/c_course/HW2/src/main.c
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 stdio.h
-/home/bozhiliu/m0/HW2/src/stdio.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdio.h
 card.h
-/home/bozhiliu/m0/HW2/src/card.h
+/cygdrive/c/Users/vito/c_course/HW2/src/card.h
 output.h
-/home/bozhiliu/m0/HW2/src/output.h
+/cygdrive/c/Users/vito/c_course/HW2/src/output.h
 str.h
-/home/bozhiliu/m0/HW2/src/str.h
+/cygdrive/c/Users/vito/c_course/HW2/src/str.h
 replace.h
-/home/bozhiliu/m0/HW2/src/replace.h
+/cygdrive/c/Users/vito/c_course/HW2/src/replace.h
 
-/home/bozhiliu/m0/HW2/src/output.c
+/cygdrive/c/Users/vito/c_course/HW2/src/output.c
 output.h
-/home/bozhiliu/m0/HW2/src/output.h
+/cygdrive/c/Users/vito/c_course/HW2/src/output.h
 
-/home/bozhiliu/m0/HW2/src/output.h
+/cygdrive/c/Users/vito/c_course/HW2/src/output.h
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 stdio.h
-/home/bozhiliu/m0/HW2/src/stdio.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdio.h
 stdlib.h
-/home/bozhiliu/m0/HW2/src/stdlib.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdlib.h
 
-/home/bozhiliu/m0/HW2/src/replace.c
+/cygdrive/c/Users/vito/c_course/HW2/src/replace.c
 replace.h
-/home/bozhiliu/m0/HW2/src/replace.h
+/cygdrive/c/Users/vito/c_course/HW2/src/replace.h
 
-/home/bozhiliu/m0/HW2/src/replace.h
+/cygdrive/c/Users/vito/c_course/HW2/src/replace.h
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 
-/home/bozhiliu/m0/HW2/src/str.c
+/cygdrive/c/Users/vito/c_course/HW2/src/str.c
 stdlib.h
-/home/bozhiliu/m0/HW2/src/stdlib.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdlib.h
 str.h
-/home/bozhiliu/m0/HW2/src/str.h
+/cygdrive/c/Users/vito/c_course/HW2/src/str.h
 
-/home/bozhiliu/m0/HW2/src/str.h
+/cygdrive/c/Users/vito/c_course/HW2/src/str.h
 dlist.h
-/home/bozhiliu/m0/HW2/src/dlist.h
+/cygdrive/c/Users/vito/c_course/HW2/src/dlist.h
 stdio.h
-/home/bozhiliu/m0/HW2/src/stdio.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdio.h
 stdlib.h
-/home/bozhiliu/m0/HW2/src/stdlib.h
+/cygdrive/c/Users/vito/c_course/HW2/src/stdlib.h
 

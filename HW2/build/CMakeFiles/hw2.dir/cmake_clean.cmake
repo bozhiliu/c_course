@@ -6,7 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/hw2.dir/replace.o"
   "CMakeFiles/hw2.dir/str.o"
   "hw2.pdb"
-  "hw2"
+  "hw2.exe"
+  "libhw2.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

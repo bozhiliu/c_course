@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/bozhiliu/m0/HW2/src/card.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/card.o"
-  "/home/bozhiliu/m0/HW2/src/dlist.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/dlist.o"
-  "/home/bozhiliu/m0/HW2/src/main.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/main.o"
-  "/home/bozhiliu/m0/HW2/src/output.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/output.o"
-  "/home/bozhiliu/m0/HW2/src/replace.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/replace.o"
-  "/home/bozhiliu/m0/HW2/src/str.c" "/home/bozhiliu/m0/HW2/build/CMakeFiles/hw2.dir/str.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/card.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/card.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/dlist.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/dlist.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/main.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/main.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/output.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/output.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/replace.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/replace.o"
+  "/cygdrive/c/Users/vito/c_course/HW2/src/str.c" "/cygdrive/c/Users/vito/c_course/HW2/build/CMakeFiles/hw2.dir/str.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
