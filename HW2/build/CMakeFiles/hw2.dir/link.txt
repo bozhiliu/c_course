@@ -1,1 +1,0 @@
-/usr/bin/cc    -Wl,--enable-auto-import CMakeFiles/hw2.dir/card.o CMakeFiles/hw2.dir/dlist.o CMakeFiles/hw2.dir/main.o CMakeFiles/hw2.dir/output.o CMakeFiles/hw2.dir/replace.o CMakeFiles/hw2.dir/str.o  -o hw2.exe -Wl,--out-implib,libhw2.dll.a -Wl,--major-image-version,0,--minor-image-version,0  
