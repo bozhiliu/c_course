@@ -12,7 +12,7 @@
 void DListInit(DList *list)
 {
 	list->size = 1;
-	//DListNode * start = (DListNode *) malloc(sizeof(DListNode));
+	//DListNode * start =  malloc(sizeof(DListNode));
 	list->head = NULL;
 	list->tail = NULL;
 }

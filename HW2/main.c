@@ -29,15 +29,19 @@ int main(int argc, char* argv[])
 	FILE* str = fopen(argv[2],"r");
 	FILE* out = fopen(argv[3], "w");
 
-	DList* neg_card ;
-	DList* str_list;
-	DList* pos_card;
+	DList *neg_card = malloc(sizeof(DList));
+	DList* str_list = malloc(sizeof(DList));
+	DList* pos_card = malloc(sizeof(DList));
+
+//	neg_card->size = 0;
+//	neg_card->head = NULL;
+//	neg_card->tail = NULL;
 
 	DListInit(neg_card);
-//	DListInit(str_list);
-//	DListInit(pos_card);
+	DListInit(str_list);
+	DListInit(pos_card);
 
-//	card_read(card, neg_card, pos_card);
+	card_read(card, neg_card, pos_card);
 //	str_read(str, str_list);
 //	replace_process(neg_card, pos_card, str_list);
 

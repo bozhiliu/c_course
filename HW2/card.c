@@ -8,6 +8,8 @@
 #include "bool.h"
 #include "card.h"
 #include "stdlib.h"
+#define DEBUG
+
 
 void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 {
@@ -15,7 +17,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 	int curr_index = 0;
 
 	// array for holding the card
-	char* curr_card[1024];
+	char curr_card[1024];
 
 	// current character
 	char card_char;
@@ -35,16 +37,25 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 	DListNode* curr_pos = pos_card->head;
 	DListNode* curr_neg = neg_card->head;
 
+#ifdef DEBUG
+	printf("Stamp 1 reached\n");
+#endif
 
 
 	while(!feof(card_file))
 	{
 		// read single character
 		fscanf(card_file, "%c", &card_char);
-
+#ifdef DEBUG
+		printf("%c\n",card_char);
+#endif
 		// handle underscore
-		if(strncmp(card_char, "_") == 0)
+		if(strncmp(&card_char, "_") == 0)
 		{
+			#ifdef DEBUG
+				printf("case1 \n");
+			#endif
+
 			// check for overflow
 			if(curr_index > 1023) continue;
 			// increase blank length when assured continuity
@@ -67,6 +78,10 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		// handle normal characters
 		if(strncmp(card_char, "\n") != 0)
 		{
+			#ifdef DEBUG
+				printf("case2 \n");
+			#endif
+
 			// check for overflow
 			if(curr_index > 1023) continue;
 
@@ -75,11 +90,16 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			curr_index += 1;
 			continue;
 		}
-
+		#ifdef DEBUG
+			printf("case3 \n");
+		#endif
 		// handle if there is no string in new line
 		if(strncmp(card_char,"\n") == 0 && curr_index == 0)
 			continue;
 
+		#ifdef DEBUG
+			printf("case4 \n");
+		#endif
 		// handle when this line is ending
 		if(strncmp(card_char,"\n") == 0 && curr_index != 0)
 		{
