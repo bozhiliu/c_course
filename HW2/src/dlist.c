@@ -149,6 +149,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 	{
 		list->head = currNode->next;
 		if(currNode->next != NULL) currNode->next->prev = NULL;
+		free(currNode->str);
 		free(currNode);
 		return 0;
 	}
@@ -157,6 +158,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 	{
 		list->tail = currNode->prev;
 		if(currNode->prev != NULL) currNode->prev->next = NULL;
+		free(currNode->str);
 		free(currNode);
 		return 0;
 	}
@@ -168,6 +170,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 		{
 			DListNode *prev = iterator->prev;
 			DListNode *next = iterator->next;
+			free(currNode->str);
 			free(currNode);
 			prev->next = next;
 			next->prev = prev;

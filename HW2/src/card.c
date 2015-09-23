@@ -13,7 +13,7 @@
 #define DEBUG
 
 
-void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
+void card_read(FILE* card_file,  DList* neg_card)
 {
 	// index for reading single character
 	int curr_index = 0;
@@ -41,8 +41,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 	bool blankContinuity = false;
 
 	// headers for pos_card and neg_card array
-	DListNode* curr_pos = pos_card->head;
-	DListNode* curr_neg = neg_card->head;
+	DListNode* curr_neg = neg_card->tail;
 
 #ifdef DEBUG
 	printf("Stamp 1 reached\n");
@@ -73,7 +72,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			//strcpy(&blank_check[curr_index%3], '_');
 			blank_check[curr_index%3] = '_';
 			// check continuity for initial encounter
-			if((blank_check[0] == card_underscore) && (blank_check[1]== card_underscore) && (blank_check[2] == card_underscore) && blankIndex == -1)
+			if((blank_check[0] == card_underscore) && (blank_check[1]== card_underscore) && (blank_check[2] == card_underscore) && blankIndex == -1 && blankContinuity == false)
 			{
 				blankIndex = curr_index - 2;
 				blankContinuity = true;
@@ -120,25 +119,22 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			printf("case5 \n");
 		#endif
 
-			// if overflow make the last char to be \0
-			if(curr_index < 1023)
+			// if overflow make the last one to be \0
+			if (curr_card >= 1023)
 			{
-				curr_card[curr_index] = '\n';
-				curr_card[curr_index+1] = '\0';
-//				strcpy(&curr_card[curr_index], '\n');
-//				strcpy(&curr_card[curr_index+1], '\0');
+				curr_card[1023] = '\0';
 			}
 			else
 			{
-				curr_card[curr_index] = '\0';
-//				strcpy(&curr_card[curr_index], '\0');
+				curr_card[curr_index] = '\n';
+				curr_card[curr_index + 1] = '\0';
 			}
 
 			// Generate new node
 			DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
 
 			// creating new array that store the string
-			char capture[1024] ;
+			char* capture =(char*) malloc(sizeof(char)*(curr_index+1)) ;
 			int count;
 			for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
 			newNode->str = capture;
@@ -196,9 +192,9 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 				DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
 
 				// creating new array that store the string
-				char capture[1024] ;
+				char* capture = (char*)malloc(sizeof(char)*(curr_index + 1));
 				int count;
-				for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
+				for (count = 0; count <= curr_index; count++)	capture[count] = curr_card[count];
 				newNode->str = capture;
 
 				// put into pos_card or neg_card

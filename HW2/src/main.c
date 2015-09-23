@@ -12,22 +12,22 @@
 #include "output.h"
 #include "str.h"
 #include "replace.h"
+#include "test.cpp"
 
 
 
 
-
-int main(int argc, char* argv[])
+int main()//int argc, char* argv[])
 {
-	if (argc != 4)
-	{
-		printf("Usage: chars inputCards inputStrings outputFile\n");
-		return -1;
-	}
+//	if (argc != 4)
+//	{
+//		printf("Usage: chars inputCards inputStrings outputFile\n");
+//		return -1;
+//	}
 
-	FILE* card = fopen(argv[1], "r");
-	FILE* str = fopen(argv[2],"r");
-	FILE* out = fopen(argv[3], "w");
+//	FILE* card = fopen(argv[1], "r");
+//	FILE* str = fopen(argv[2],"r");
+//	FILE* out = fopen(argv[3], "w");
 
 	DList *neg_card = malloc(sizeof(DList));
 	DList* str_list = malloc(sizeof(DList));
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 	DListInsertAfter(neg_card, neg_card->tail, t1);
 	DListInsertAfter(neg_card, neg_card->tail, t2);
 	DListInsertAfter(neg_card, neg_card->tail, t3);
-
+	ttt(neg_card);
 
 //	card_read(card, neg_card, pos_card);
 //	DListShow(neg_card);
