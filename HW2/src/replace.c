@@ -7,6 +7,10 @@
 
 
 #include "replace.h"
+#include "string.h"
+#include "stdlib.h"
+#include "stdio.h"
+
 
 
 void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card)
@@ -16,7 +20,8 @@ void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card)
 	int count;
 	for(count=0;count<1024;count++)
 	{
-		pos_card->str[count] = neg_card->str[count];
+		//pos_card->str[count] = neg_card->str[count];
+		strcpy(&pos_card->str[count], &neg_card->str[count]);
 	}
 	if(str!=NULL)
 	{
@@ -24,7 +29,12 @@ void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card)
 		int length = neg_card->blankLength;
 		for(count=0; count<length; count++)
 		{
-			pos_card->str[index+count] = str->str[count];
+//			pos_card->str[index+count] = str->str[count];
+			strcpy(&pos_card->str[count], &neg_card->str[count]);
+		}
+		for(count = index; count<index+length; count++)
+		{
+			strcpy(&pos_card->str[count], &str->str[count]);
 		}
 	}
 

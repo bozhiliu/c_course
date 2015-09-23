@@ -7,6 +7,9 @@
 
 #include "stdlib.h"
 #include "str.h"
+#include "string.h"
+#include "stdio.h"
+
 
 void str_read(FILE * str_file, DList* str_list)
 {
@@ -14,7 +17,8 @@ void str_read(FILE * str_file, DList* str_list)
 	int count;
 	for(count=0;count<1024;count++)
 	{
-		curr_str[count] = "\0";
+//		curr_str[count] = "\0";
+		strcpy(&curr_str[count], "\0");
 	}
 	DListNode * curr_node = str_list->head;
 
@@ -25,7 +29,7 @@ void str_read(FILE * str_file, DList* str_list)
 		count = 1;
 		while(count<1024)
 		{
-			if(strncmp(curr_str[count],"\0") == 0 && strncmp(curr_str[count-1], "\0") != 0)
+			if(strcmp(&curr_str[count],"\0") == 0 && strcmp(&curr_str[count-1], "\0") != 0)
 			{
 				break;
 			}
@@ -38,13 +42,15 @@ void str_read(FILE * str_file, DList* str_list)
 		int tmp;
 		for(tmp=0;tmp<1024;tmp++)
 		{
-			capture[tmp] = curr_str[tmp];
+			//capture[tmp] = curr_str[tmp];
+			strcpy(&capture[tmp], &curr_str[tmp]);
 		}
 		newNode->str = capture;
 		DListInsertAfter(str_list, curr_node, newNode);
 		for(count=0;count<1024;count++)
 		{
-			curr_str[count] = "\0";
+//			curr_str[count] = "\0";
+			strcpy(&curr_str[count], "\0");
 		}
 	}
 

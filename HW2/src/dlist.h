@@ -10,6 +10,7 @@
 
 #include "bool.h"
 #include "stdlib.h"
+#include "stdio.h"
 
 /* if the  str  does  not  contain a blank , then
 blankIndex  and  blankLength  should  be  -1 */
@@ -49,5 +50,8 @@ DListNode* DListSearch(DList* list , char * key);
 
 /*  remove  the  list  node (if it is a member  of the  list) */
 bool DListRemove(DList* list , DListNode* currNode );
+
+void DListShow(DList* list);
+
 
 #endif /* DLIST_H_ */

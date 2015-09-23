@@ -8,6 +8,8 @@
 #include "bool.h"
 #include "card.h"
 #include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
 #define DEBUG
 
 
@@ -21,11 +23,16 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 
 	// current character
 	char card_char;
-
+	char card_underscore;
+	char card_newline;
+	card_underscore = '_';
+	card_newline = '\n';
+#ifdef DEBUG
+	printf("Card_underscore %c\n", card_underscore);
+#endif
 	// array used for checking blanks initialized to "111"
 	char blank_check[3];
-	blank_check[0] = "1"; blank_check[1] = "1"; blank_check[2] = "1";
-
+	blank_check[0] = '1'; blank_check[1] = '1'; blank_check[2] = '1';
 	// initial blank index and blank length
 	int blankIndex = -1;
 	int blankLength = 0;
@@ -47,10 +54,11 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		// read single character
 		fscanf(card_file, "%c", &card_char);
 #ifdef DEBUG
-		printf("%c\n",card_char);
+		printf( "T %c %c\n",card_char, card_underscore);
 #endif
 		// handle underscore
-		if(strncmp(&card_char, "_") == 0)
+	//	if(strcmp(&card_char, &card_underscore) == 0)
+		if( card_char == card_underscore)
 		{
 			#ifdef DEBUG
 				printf("case1 \n");
@@ -61,9 +69,11 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			// increase blank length when assured continuity
 			if(blankContinuity == true) blankLength += 1;
 			// recursively assigning blank_check array
-			blank_check[curr_index%3] = "_";
+			//	blank_check[curr_index%3] = "_";
+			//strcpy(&blank_check[curr_index%3], '_');
+			blank_check[curr_index%3] = '_';
 			// check continuity for initial encounter
-			if(strncmp(blank_check[0], "_") == 0 && strncmp(blank_check[1],"_") == 0 && strncmp(blank_check[2],"_") == 0 && blankIndex != -1)
+			if((blank_check[0] == card_underscore) && (blank_check[1]== card_underscore) && (blank_check[2] == card_underscore) && blankIndex == -1)
 			{
 				blankIndex = curr_index - 2;
 				blankContinuity = true;
@@ -76,7 +86,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		}
 
 		// handle normal characters
-		if(strncmp(card_char, "\n") != 0)
+		if(card_char != '\n')
 		{
 			#ifdef DEBUG
 				printf("case2 \n");
@@ -94,24 +104,34 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			printf("case3 \n");
 		#endif
 		// handle if there is no string in new line
-		if(strncmp(card_char,"\n") == 0 && curr_index == 0)
+		if((card_char == '\n') && curr_index == 0)
 			continue;
 
 		#ifdef DEBUG
 			printf("case4 \n");
 		#endif
-		// handle when this line is ending
-		if(strncmp(card_char,"\n") == 0 && curr_index != 0)
+
+
+			// handle when this line is ending
+		if((card_char == card_newline) && curr_index != 0)
 		{
+
+		#ifdef DEBUG
+			printf("case5 \n");
+		#endif
+
 			// if overflow make the last char to be \0
 			if(curr_index < 1023)
 			{
-				curr_card[curr_index] = "\n";
-				curr_card[curr_index+1] = "\0";
+				curr_card[curr_index] = '\n';
+				curr_card[curr_index+1] = '\0';
+//				strcpy(&curr_card[curr_index], '\n');
+//				strcpy(&curr_card[curr_index+1], '\0');
 			}
 			else
 			{
-				curr_card[curr_index] = "\0";
+				curr_card[curr_index] = '\0';
+//				strcpy(&curr_card[curr_index], '\0');
 			}
 
 			// Generate new node
@@ -128,23 +148,87 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			{
 				// To preserve the order of input card, all card input goes to neg_card
 				//DListInsertAfter(pos_card,curr_pos, newNode);
-				DListInsertAfter(neg_card,curr_pos, newNode);
+				DListShow(neg_card);
+				DListInsertAfter(neg_card,neg_card->tail, newNode);
+				DListShow(neg_card);
+//				curr_neg = newNode;
 				newNode->blankIndex = -1;
 				newNode->blankLength = -1;
 			}
 			else
 			{
-				DListInsertAfter(neg_card, curr_neg, newNode);
+				DListShow(neg_card);
+				DListInsertAfter(neg_card, neg_card->tail, newNode);
+				DListShow(neg_card);
+				//				curr_neg = newNode;
 				newNode->blankIndex = blankIndex;
 				newNode->blankLength = blankLength;
 			}
 			// initialize the variables for a new line
 			curr_index = 0;
-			blank_check[0] = "1"; blank_check[1] = "1"; blank_check[2] = "1";
+			blank_check[0] = '1'; blank_check[1] = '1'; blank_check[2] = '1';
+//			strcpy(&blank_check[0], '1');
+//			strcpy(&blank_check[1], '1');
+//			strcpy(&blank_check[2], '1');
 			blankIndex = -1;
 			blankLength = 0;
 			blankContinuity = false;
+			free(newNode);
 			continue;
 		}
 	}
+	// After reach EOF do another round for adding last DListNode
+
+				if(curr_index < 1023)
+				{
+					curr_card[curr_index] = '\n';
+					curr_card[curr_index+1] = '\0';
+	//				strcpy(&curr_card[curr_index], '\n');
+	//				strcpy(&curr_card[curr_index+1], '\0');
+				}
+				else
+				{
+					curr_card[curr_index] = '\0';
+	//				strcpy(&curr_card[curr_index], '\0');
+				}
+
+				// Generate new node
+				DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
+
+				// creating new array that store the string
+				char capture[1024] ;
+				int count;
+				for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
+				newNode->str = capture;
+
+				// put into pos_card or neg_card
+				if (blankIndex == -1)
+				{
+					DListShow(neg_card);
+					// To preserve the order of input card, all card input goes to neg_card
+					//DListInsertAfter(pos_card,curr_pos, newNode);
+					DListInsertAfter(neg_card,neg_card->tail, newNode);
+					DListShow(neg_card);
+					//					curr_neg = newNode;
+					newNode->blankIndex = -1;
+					newNode->blankLength = -1;
+				}
+				else
+				{
+					DListShow(neg_card);
+					DListInsertAfter(neg_card, neg_card->tail, newNode);
+					DListShow(neg_card);
+					//					curr_neg = newNode;
+					newNode->blankIndex = blankIndex;
+					newNode->blankLength = blankLength;
+				}
+				// initialize the variables for a new line
+				curr_index = 0;
+				blank_check[0] = '1'; blank_check[1] = '1'; blank_check[2] = '1';
+	//			strcpy(&blank_check[0], '1');
+	//			strcpy(&blank_check[1], '1');
+	//			strcpy(&blank_check[2], '1');
+				blankIndex = -1;
+				blankLength = 0;
+				blankContinuity = false;
 }

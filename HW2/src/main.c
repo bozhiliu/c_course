@@ -33,15 +33,25 @@ int main(int argc, char* argv[])
 	DList* str_list = malloc(sizeof(DList));
 	DList* pos_card = malloc(sizeof(DList));
 
-//	neg_card->size = 0;
-//	neg_card->head = NULL;
-//	neg_card->tail = NULL;
-
 	DListInit(neg_card);
 	DListInit(str_list);
 	DListInit(pos_card);
 
-	card_read(card, neg_card, pos_card);
+
+	DListNode* t1 = (DListNode* )malloc(sizeof(DListNode));
+	DListNode* t2 = (DListNode* )malloc(sizeof(DListNode));
+	DListNode* t3 = (DListNode* )malloc(sizeof(DListNode));
+	t1->str = "t1";
+	t2->str = "t2";
+	t3->str = "t3";
+	DListInsertAfter(neg_card, neg_card->tail, t1);
+	DListInsertAfter(neg_card, neg_card->tail, t2);
+	DListInsertAfter(neg_card, neg_card->tail, t3);
+
+
+//	card_read(card, neg_card, pos_card);
+//	DListShow(neg_card);
+//	DListShow(pos_card);
 //	str_read(str, str_list);
 //	replace_process(neg_card, pos_card, str_list);
 
