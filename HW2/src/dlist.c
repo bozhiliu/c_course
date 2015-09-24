@@ -7,7 +7,7 @@
 
 #include "string.h"
 #include "dlist.h"
-#define DEBUG
+//#define DEBUG
 
 void DNodeDataCpy(DListNode *A, DListNode *B)
 {
@@ -46,7 +46,13 @@ void DListDestoy(DList *list)
 bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
 {
 	list->size = list->size + 1;
-
+#ifdef DEBUG
+	if(currNode != NULL)
+		{
+			printf("Header points to %s\n", list->head->str);
+			printf("Tail points to %s\n", list->tail->str);
+		}
+#endif
 	if(currNode == NULL)
 	{
 #ifdef DEBUG
@@ -54,14 +60,14 @@ bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
 		printf("Inserting(after) at start. \n");
 		printf("NewNode str %s\n", newNode->str);
 #endif
-//		DListNode * newNode = (DListNode *) malloc(sizeof(DListNode));
-//		DNodeDataCpy(newNode, inNode);
 		list->head = newNode;
 		list->tail = newNode;
 		newNode->prev = newNode;
 		newNode->next = newNode;
 #ifdef DEBUG
 		DListShow(list);
+		printf("Header points to %s\n", list->head->str);
+		printf("Tail points to %s\n", list->tail->str);
 #endif
 		return 0;
 	}
@@ -82,6 +88,8 @@ bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
 		list->tail = newNode;
 #ifdef DEBUG
 		DListShow(list);
+		printf("Header points to %s\n", list->head->str);
+		printf("Tail points to %s\n", list->tail->str);
 #endif
 		return 0;
 	}
@@ -92,6 +100,10 @@ bool DListInsertAfter (DList *list, DListNode *currNode, DListNode* newNode )
 	newNode->prev = currNode;
 	newNode->next = nextNode;
 	nextNode->prev = newNode;
+#ifdef DEBUG
+	printf("Header points to %s", list->head->str);
+	printf("Tail points to %s", list->tail->str);
+#endif
 	return 0;
 }
 
@@ -149,6 +161,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 	{
 		list->head = currNode->next;
 		if(currNode->next != NULL) currNode->next->prev = NULL;
+		free(currNode->str);
 		free(currNode);
 		return 0;
 	}
@@ -157,6 +170,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 	{
 		list->tail = currNode->prev;
 		if(currNode->prev != NULL) currNode->prev->next = NULL;
+		free(currNode->str);
 		free(currNode);
 		return 0;
 	}
@@ -168,6 +182,7 @@ bool DListRemove(DList* list , DListNode* currNode )
 		{
 			DListNode *prev = iterator->prev;
 			DListNode *next = iterator->next;
+			free(currNode->str);
 			free(currNode);
 			prev->next = next;
 			next->prev = prev;
@@ -186,10 +201,11 @@ void DListShow(DList *list)
 		return;
 	}
 	DListNode* iterator = list->head;
-	while(iterator != list->tail)
+	while(iterator != iterator->next)
 	{
-		printf("Content:  %s\n", iterator->str);
+		printf("1Content:  %s\n", iterator->str);
 		iterator = iterator->next;
 	}
-	printf("Content:  %s\n", iterator->str);
+	printf("2Content:  %s\n", iterator->str);
+	printf("List Size %d\n\n",list->size);
 }

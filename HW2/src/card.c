@@ -10,10 +10,10 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
-#define DEBUG
+//#define DEBUG
 
 
-void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
+void card_read(FILE* card_file,  DList* neg_card)
 {
 	// index for reading single character
 	int curr_index = 0;
@@ -27,9 +27,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 	char card_newline;
 	card_underscore = '_';
 	card_newline = '\n';
-#ifdef DEBUG
-	printf("Card_underscore %c\n", card_underscore);
-#endif
+
 	// array used for checking blanks initialized to "111"
 	char blank_check[3];
 	blank_check[0] = '1'; blank_check[1] = '1'; blank_check[2] = '1';
@@ -41,8 +39,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 	bool blankContinuity = false;
 
 	// headers for pos_card and neg_card array
-	DListNode* curr_pos = pos_card->head;
-	DListNode* curr_neg = neg_card->head;
+	DListNode* curr_neg = neg_card->tail;
 
 #ifdef DEBUG
 	printf("Stamp 1 reached\n");
@@ -54,14 +51,14 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		// read single character
 		fscanf(card_file, "%c", &card_char);
 #ifdef DEBUG
-		printf( "T %c %c\n",card_char, card_underscore);
+		printf( "Character In:  %c \n",card_char);
 #endif
 		// handle underscore
 	//	if(strcmp(&card_char, &card_underscore) == 0)
 		if( card_char == card_underscore)
 		{
 			#ifdef DEBUG
-				printf("case1 \n");
+				printf("Underscore Reached! \n");
 			#endif
 
 			// check for overflow
@@ -73,7 +70,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			//strcpy(&blank_check[curr_index%3], '_');
 			blank_check[curr_index%3] = '_';
 			// check continuity for initial encounter
-			if((blank_check[0] == card_underscore) && (blank_check[1]== card_underscore) && (blank_check[2] == card_underscore) && blankIndex == -1)
+			if((blank_check[0] == card_underscore) && (blank_check[1]== card_underscore) && (blank_check[2] == card_underscore) && blankIndex == -1 && blankContinuity == false)
 			{
 				blankIndex = curr_index - 2;
 				blankContinuity = true;
@@ -89,7 +86,7 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		if(card_char != '\n')
 		{
 			#ifdef DEBUG
-				printf("case2 \n");
+				printf("Normal Character \n");
 			#endif
 
 			// check for overflow
@@ -100,16 +97,15 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			curr_index += 1;
 			continue;
 		}
-		#ifdef DEBUG
-			printf("case3 \n");
-		#endif
+
 		// handle if there is no string in new line
 		if((card_char == '\n') && curr_index == 0)
+		{
+			#ifdef DEBUG
+				printf("Empty Line! \n");
+			#endif
 			continue;
-
-		#ifdef DEBUG
-			printf("case4 \n");
-		#endif
+		}
 
 
 			// handle when this line is ending
@@ -117,49 +113,47 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 		{
 
 		#ifdef DEBUG
-			printf("case5 \n");
+			printf("Line End Reached! \n");
 		#endif
 
-			// if overflow make the last char to be \0
-			if(curr_index < 1023)
+			// if overflow make the last one to be \0
+			if (curr_index >= 1023)
 			{
-				curr_card[curr_index] = '\n';
-				curr_card[curr_index+1] = '\0';
-//				strcpy(&curr_card[curr_index], '\n');
-//				strcpy(&curr_card[curr_index+1], '\0');
+				curr_card[1023] = '\0';
 			}
 			else
 			{
-				curr_card[curr_index] = '\0';
-//				strcpy(&curr_card[curr_index], '\0');
+				curr_card[curr_index] = '\n';
+				curr_card[curr_index + 1] = '\0';
 			}
 
 			// Generate new node
 			DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
 
 			// creating new array that store the string
-			char capture[1024] ;
+			char* capture =(char*) malloc(sizeof(char)*(curr_index+1)) ;
 			int count;
 			for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
 			newNode->str = capture;
-
+//			printf("New String %s", newNode->str);
+//			printf("Length %d\n", strlen(newNode->str));
 			// put into pos_card or neg_card
 			if (blankIndex == -1)
 			{
 				// To preserve the order of input card, all card input goes to neg_card
 				//DListInsertAfter(pos_card,curr_pos, newNode);
-				DListShow(neg_card);
+		//		DListShow(neg_card);
 				DListInsertAfter(neg_card,neg_card->tail, newNode);
-				DListShow(neg_card);
+		//		DListShow(neg_card);
 //				curr_neg = newNode;
 				newNode->blankIndex = -1;
 				newNode->blankLength = -1;
 			}
 			else
 			{
-				DListShow(neg_card);
+		//		DListShow(neg_card);
 				DListInsertAfter(neg_card, neg_card->tail, newNode);
-				DListShow(neg_card);
+		//		DListShow(neg_card);
 				//				curr_neg = newNode;
 				newNode->blankIndex = blankIndex;
 				newNode->blankLength = blankLength;
@@ -173,11 +167,15 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 			blankIndex = -1;
 			blankLength = 0;
 			blankContinuity = false;
-			free(newNode);
+//			free(newNode);
 			continue;
 		}
 	}
 	// After reach EOF do another round for adding last DListNode
+
+	#ifdef DEBUG
+			printf("Last line Reached! \n");
+		#endif
 
 				if(curr_index < 1023)
 				{
@@ -196,28 +194,29 @@ void card_read(FILE* card_file,  DList* neg_card, DList*	 pos_card)
 				DListNode* newNode = (DListNode *)malloc(sizeof(DListNode));
 
 				// creating new array that store the string
-				char capture[1024] ;
+				char* capture = (char*)malloc(sizeof(char)*(curr_index + 1));
 				int count;
-				for(count=0; count<=curr_index; count++)	capture[count] = curr_card[count];
+				for (count = 0; count <= curr_index; count++)	capture[count] = curr_card[count];
 				newNode->str = capture;
-
+	//			printf("New String %s", newNode->str);
+	//			printf("Length %d\n", strlen(newNode->str));
 				// put into pos_card or neg_card
 				if (blankIndex == -1)
 				{
-					DListShow(neg_card);
+		//			DListShow(neg_card);
 					// To preserve the order of input card, all card input goes to neg_card
 					//DListInsertAfter(pos_card,curr_pos, newNode);
 					DListInsertAfter(neg_card,neg_card->tail, newNode);
-					DListShow(neg_card);
+		//			DListShow(neg_card);
 					//					curr_neg = newNode;
 					newNode->blankIndex = -1;
 					newNode->blankLength = -1;
 				}
 				else
 				{
-					DListShow(neg_card);
+	//				DListShow(neg_card);
 					DListInsertAfter(neg_card, neg_card->tail, newNode);
-					DListShow(neg_card);
+	//				DListShow(neg_card);
 					//					curr_neg = newNode;
 					newNode->blankIndex = blankIndex;
 					newNode->blankLength = blankLength;
