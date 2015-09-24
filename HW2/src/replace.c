@@ -10,7 +10,7 @@
 #include "string.h"
 #include "stdlib.h"
 #include "stdio.h"
-//#define DEBUG
+#define DEBUG
 
 
 void copy_replace(DListNode* neg_card, DListNode* str, DListNode* pos_card)
@@ -61,6 +61,7 @@ void replace_process(DList* neg_card, DList* pos_card, DList* str)
 //	DListNode *poscard_index = pos_card->head;
 	while(negcard_index != NULL)
 	{
+	 	printf("Current neg card %s\n", negcard_index->str);
 		if(str->head == NULL) break;
 	#ifdef DEBUG
 			printf("Stamp0 ! \n");
@@ -77,11 +78,16 @@ void replace_process(DList* neg_card, DList* pos_card, DList* str)
 			if(pos_iterator == pos_card->tail)	DListInsertBefore(pos_card, NULL, newNode);
 			else
 			{
-				if(pos_iterator->blankLength != -1) DListInsertBefore(pos_card, pos_iterator, newNode);
-				else pos_iterator = pos_iterator->next;
+			  while(pos_iterator->blankLength == -1 && pos_iterator->next!=pos_iterator)
+			    {
+			      pos_iterator = pos_iterator->next;
+			      //	if(pos_iterator->blankLength != -1) DListInsertBefore(pos_card, pos_iterator, newNode);
+			      //	else pos_iterator = pos_iterator->next;
+			    }
+			  DListInsertBefore(pos_card, pos_iterator, newNode);
 			}
 			negcard_index = negcard_index->next;
-			DListRemove(neg_card, negcard_index);
+			DListRemove(neg_card, negcard_index->prev);
 		}
 		else
 		{
@@ -90,44 +96,71 @@ void replace_process(DList* neg_card, DList* pos_card, DList* str)
 #ifdef DEBUG
 		printf("Stamp2 ! \n");
 #endif
-			while(str_iterator != str->tail)
+			while(str_iterator != str_iterator->next)
 			{
-
+#ifdef DEBUG
+			  printf("Str Iterator %s\n", str_iterator->str);
+#endif
 				if (str_iterator->blankLength == negcard_index->blankLength)
 				{
 
 					copy_replace(negcard_index, str_iterator, newNode);
 #ifdef DEBUG
 		printf("Stamp3 ! \n");
+		printf("New Node Str %s \n", newNode->str);
 #endif
 					break;
 				}
 				else	str_iterator = str_iterator->next;
-
+			  
 			}
+			if((str_iterator->blankLength == negcard_index->blankLength) && (str_iterator == str->tail))
+			  {
+			    copy_replace(negcard_index, str_iterator, newNode);
+#ifdef DEBUG
+			    printf("Stamp 3'\n");
+			    printf("New Node Str %s \n", newNode->str);
+#endif
+			  }
 
 			if((str_iterator == str->tail) && (str_iterator->blankLength != negcard_index->blankLength))
 			{
 				negcard_index = negcard_index->next;
-				DListRemove(neg_card, negcard_index);
+				DListRemove(neg_card, negcard_index->prev);
 				break;
 			}
-
-
+#ifdef DEBUG
+			printf("Stamp 4 ! \n");
+#endif
 
 			DListNode *pos_iterator = pos_card->head;
 			if(pos_iterator == NULL)	DListInsertBefore(pos_card, NULL, newNode);
 			else
 			{
 
-				while(pos_iterator->blankLength < newNode->blankLength) pos_iterator = pos_iterator->next;
+			  while((pos_iterator->blankLength < newNode->blankLength)&&(pos_iterator->next != pos_iterator)) pos_iterator = pos_iterator->next;
 //				if(pos_iterator->blankLength > newNode->blankLength)
-				DListInsertBefore(pos_card, pos_iterator, newNode);
+				DListInsertAfter(pos_card, pos_iterator, newNode);
 //				else pos_iterator = pos_iterator->next;
 			}
-			negcard_index = negcard_index->next;
-			DListRemove(neg_card, negcard_index);
+#ifdef DEBUG
+			DListShow(pos_card);
+			printf("Stamp 5!\n");
+#endif
+
+
+			if(negcard_index ->next == negcard_index)
+			  {
+			    DListRemove(neg_card, negcard_index);
+			    negcard_index = NULL;
+			  }
+			else
+			  {
+			    negcard_index = negcard_index->next;
+			    DListRemove(neg_card, negcard_index->prev);
+			  }
 			DListRemove(str, str_iterator);
+			str_iterator = str->head;
 		}
 
 	}

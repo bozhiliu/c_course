@@ -51,13 +51,13 @@ int main(int argc, char* argv[])
 
 	card_read(card, neg_card);
 //	DListShow(neg_card);
-//  DListShow(neg_card);
+//	DListShow(neg_card);
 //	DListShow(pos_card);
 	str_read(str, str_list);
 //	printf("STR_LIST\n");
 //	DListShow(str_list);
 	replace_process(neg_card, pos_card, str_list);
-
+	DListShow(pos_card);
 	write_output(out, pos_card);
 //	DListDestroy(neg_card);
 //	DListDestroy(pos_card);
