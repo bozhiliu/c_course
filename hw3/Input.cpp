@@ -10,6 +10,12 @@
 #include <stdlib.h>
 #include "Input.h"
 
+Input::Input(){
+    _velocity = 0;
+    _tire_angle_rate = 0;
+    _timestamp = 0;
+}
+
 
 Input::Input(double vel, double tireAngleRate, double timestamp){
     _velocity = vel;

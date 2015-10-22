@@ -8,6 +8,11 @@
 
 #include "data_source.h"
 
+data_source::data_source(){
+    
+}
+
+
 
 void data_source::data_source_parse(FILE* fin)
 {
@@ -22,6 +27,7 @@ void data_source::data_source_parse(FILE* fin)
 }
 
 void data_source::input_sort(){
+    
     float it_time, it2_time;
     for(vector<Input>::iterator it = command_list.begin();  it != command_list.end(); it++)
     {

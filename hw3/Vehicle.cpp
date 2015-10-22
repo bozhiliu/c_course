@@ -10,19 +10,10 @@
 #include <stdlib.h>
 #include "Vehicle.h"
 
-
-
-
-
-
-
 Vehicle::Vehicle(){
-    _state.setYPos(0);
-    _state.setXPos(0);
-    _state.setTireAngle(0);
-    _state.setTimeStamp(0);
-    _state.setHeading(0);
+    
 }
+
 
 void Vehicle::setState(State x){
     _state.setXPos(x.getXPos());

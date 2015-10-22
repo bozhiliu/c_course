@@ -9,6 +9,7 @@
 #include <iostream>
 #include "data_source.h"
 #include "State.h"
+#include "Input.h"
 #include "Vehicle.h"
 
 
@@ -19,7 +20,6 @@ int main(int argc, const char * argv[]) {
     
     FILE * fin  = fopen(argv[1], "r");
     data_source d_source;
-    
     while(!feof(fin))
     {
         d_source.data_source_parse(fin);

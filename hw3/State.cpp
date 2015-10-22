@@ -11,6 +11,16 @@
 #include "State.h"
 
 
+State::State() {
+    _xpos = 0;
+    _ypos = 0;
+    _tire_angle = 0;
+    _heading = 0;
+    _timestamp = 0;
+    
+}
+
+
 
 
 State::State(double x1, double x2, double x3, double x4, double timestamp){
