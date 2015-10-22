@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <vector>
 #include "State.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 class data_sink{
 private:
@@ -19,14 +23,8 @@ private:
 public:
     data_sink();
     void record_state(State sin);
-    
-    
-    
-    
+    void show();
+    void write_output(ofstream& fout);
 };
-
-
-
-
 
 #endif /* data_sink_hpp */

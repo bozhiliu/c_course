@@ -23,7 +23,9 @@ public:
     data_source();
     void data_source_parse(FILE* fin);
     void input_sort();
-    void show() const;
+    void show();
+    vector<Input> get_command_list();
+    bool verify();
 };
 
 

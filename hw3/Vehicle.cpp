@@ -11,7 +11,11 @@
 #include "Vehicle.h"
 
 Vehicle::Vehicle(){
-    
+    _state.setHeading(0);
+    _state.setTimeStamp(0);
+    _state.setTireAngle(0);
+    _state.setXPos(0);
+    _state.setYPos(0);
 }
 
 
@@ -38,8 +42,30 @@ void Vehicle::stateUpdate(Input u, double duration){
     
     State n;
     n.setXPos(xpos_prev + duration*vel*cos(tire_prev)*cos(head_prev));
-    n.setYPos(ypos_prev + duration*vel*cos(tire_prev)*cos(head_prev));
+    n.setYPos(ypos_prev + duration*vel*cos(tire_prev)*sin(head_prev));
+   
+    n.setTireAngle(tire_prev + duration*angle);
+    while(n.getTireAngle()<MIN_TIRE_ANGLE)
+    {
+        n.setTireAngle(MIN_TIRE_ANGLE);
+    }
+    while(n.getTireAngle()> MAX_TIRE_ANGLE)
+    {
+        n.setTireAngle(MAX_TIRE_ANGLE);
+    }
+    
+    n.setHeading(head_prev + duration*vel*sin(tire_prev)/L);
+    while(n.getHeading() < 0)
+    {
+        n.setHeading(n.getHeading() + M_TWO_TIMES_PI);
+    }
+    while(n.getHeading() >= M_TWO_TIMES_PI)
+    {
+        n.setHeading(n.getHeading() - M_TWO_TIMES_PI);
+    }
+    
+    n.setTimeStamp(u.getTimeStamp()+duration);
     
     
-    
+    setState(n);
 }
