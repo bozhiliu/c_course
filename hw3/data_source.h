@@ -21,9 +21,9 @@ private:
     vector<Input> command_list;
 public:
     data_source();
-    
     void data_source_parse(FILE* fin);
     void input_sort();
+    void show() const;
 };
 
 
