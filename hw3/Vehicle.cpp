@@ -27,3 +27,19 @@ void Vehicle::setState(State x){
 State Vehicle::getState() const{
     return _state;
 }
+
+void Vehicle::stateUpdate(Input u, double duration){
+    double xpos_prev = _state.getXPos();
+    double ypos_prev = _state.getYPos();
+    double tire_prev = _state.getTireAngle();
+    double head_prev = _state.getHeading();
+    double vel = u.getVelocity();
+    double angle = u.getTireAngleRate();
+    
+    State n;
+    n.setXPos(xpos_prev + duration*vel*cos(tire_prev)*cos(head_prev));
+    n.setYPos(ypos_prev + duration*vel*cos(tire_prev)*cos(head_prev));
+    
+    
+    
+}
